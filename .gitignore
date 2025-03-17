@@ -24,11 +24,9 @@ dist-ssr
 *.sw?
 
 /src/components/BookDetails
-/src/components/Cart
 /src/components/same
 /src/pages/MyOrder.tsx
 /src/pages/OrderConfirm.tsx
 /src/pages/UserProfile.tsx
 /src/pages/WishList.tsx
-/src/pages/Cart.tsx
 /src/redux
