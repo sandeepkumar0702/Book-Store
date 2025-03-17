@@ -23,7 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
-/src/pages/MyOrder.tsx
+
 /src/pages/OrderConfirm.tsx
 /src/pages/UserProfile.tsx
 /src/pages/WishList.tsx
