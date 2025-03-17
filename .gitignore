@@ -23,7 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-/src/components/BookDetails
 /src/components/same
 /src/pages/MyOrder.tsx
 /src/pages/OrderConfirm.tsx
