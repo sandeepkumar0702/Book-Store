@@ -1,8 +1,8 @@
+// Utils/API.js
 import axios from "axios";
 
 export const loginApiCall = async (payload) => {
     try {
-        console.log('Login hitttttttttttttttttttttttttt');
         const response = await axios.post(
             'https://bookstore.incubation.bridgelabz.com/bookstore_user/login',
             payload
@@ -21,8 +21,8 @@ export const loginApiCall = async (payload) => {
 
         // Check and store username
         const userName = response.data.result?.fullName || 
-        response.data.fullName || 
-        payload.email.split('@')[0];
+                        response.data.fullName || 
+                        payload.email.split('@')[0];
         if (userName) {
             localStorage.setItem('userName', userName);
             console.log('Username stored:', userName);
@@ -58,8 +58,8 @@ export const signupApiCall = async (payload) => {
 
         // Check and store username
         const userName = response.data.result?.fullName || 
-        response.data.fullName || 
-         payload.email.split('@')[0];
+                        response.data.fullName || 
+                        payload.email.split('@')[0];
         if (userName) {
             localStorage.setItem('userName', userName);
             console.log('Username stored:', userName);
@@ -87,3 +87,22 @@ export const getAllBooks = async () => {
       throw error;
     }
   };
+
+// export const getAllBooks = async () => {
+//     try {
+//       const response = await axios.get("https://bookstore.incubation.bridgelabz.com/bookstore_user/get/book", {
+//         headers: {
+//           "Accept": "application/json",
+//         },
+//       });
+  
+//       if (response.data.success) {
+//         return response.data.result; // return array of books
+//       } else {
+//         throw new Error("Failed to fetch books");
+//       }
+//     } catch (error) {
+//       console.error("❌ Error in getAllBooks:", error);
+//       throw error;
+//     }
+//   };

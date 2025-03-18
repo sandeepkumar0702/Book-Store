@@ -1,7 +1,4 @@
 {
-  "compilerOptions": {
-    "types": ["vitest/globals", "@testing-library/jest-dom"],
-  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
