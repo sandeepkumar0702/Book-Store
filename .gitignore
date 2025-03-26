@@ -25,7 +25,6 @@ dist-ssr
 src/components/Auth
 src/components/Profile
 src/pages/AuthRoutes.tsx
-src/pages/MyOrders.tsx
 src/pages/OrderConfirmation.tsx
 src/pages/Profile.tsx
 
