@@ -1,10 +1,10 @@
 import React from 'react'
-import Template from './Template'
+import AuthTemplate from './AuthTemplate'
 
 function LoginForm() {
   return (
     <div>
-      <Template container={'login'}/>
+      <AuthTemplate container={'login'}/>
     </div>
   )
 }

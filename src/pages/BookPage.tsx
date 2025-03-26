@@ -1,6 +1,6 @@
 import React from 'react'
-import Breadcrumbs from '../components/Same/Breadcrumbs'
-import Header from '../components/Same/Header'
+import Breadcrumbs from '../components/Common/Breadcrumbs'
+import Header from '../components/Common/Header'
 import BookDetails from '../components/BookDetails/BookDetails'
 
 const BookPage = () => {

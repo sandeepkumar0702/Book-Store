@@ -1,16 +1,16 @@
-import React from "react";
-import Header from "../components/Same/Header";
-import Footer from "../components/Same/Footer";
-import BookContainer from "../components/BookContainer/BookContainer";
+import React from 'react'
+import Header from '../components/Common/Header'
+import BookContainer from '../components/BookContainer/BookContainer'
+import Footer from '../components/Common/Footer'
 
-const Home = ()=>{
-    return(
+const Home = () => {
+    return (
         <div>
-            <Header container = 'home' />
-            <BookContainer />
-            <Footer />
+            <Header container='home' />
+            <BookContainer/>
+            <Footer/>
         </div>
     )
 }
 
-export default Home;
+export default Home

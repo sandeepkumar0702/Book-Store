@@ -22,3 +22,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+src/components/Auth
+src/components/BookContainer
+src/components/Cart
+src/components/Profile
+src/pages/AuthRoutes.tsx
+src/pages/ForgotPassword.tsx
+src/pages/MyOrders.tsx
+src/pages/OrderConfirmation.tsx
+src/pages/Profile.tsx
+
+
+
+

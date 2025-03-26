@@ -1,73 +1,81 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../components/Same/Header';
-import Footer from '../components/Same/Footer';
-import Breadcrumbs from '../components/Same/Breadcrumbs';
-import { getWishlist, removeWishlist } from '../utils/API';
-import WishListContainer from '../components/Same/WishListContainer';
+import React, { useEffect, useState } from 'react';
+import Header from '../components/Common/Header';
+import Footer from '../components/Common/Footer';
+import BookLongCard from '../components/Common/BookLongCard';
+import Breadcrumbs from '../components/Common/Breadcrumbs';
+import Placeholder from '../components/Common/Placeholder';
+import { getWishlist } from '../api/bookApi';
 
-function WishList() {
-  const [wishlist, setWishlist] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true); 
+import bookCover1 from '../assets/images/BookCover1.png';
+import bookCover2 from '../assets/images/BookCover2.png';
+import bookCover3 from '../assets/images/BookCover3.png';
+import bookCover4 from '../assets/images/BookCover4.png';
+import bookCover5 from '../assets/images/BookCover5.png';
+import bookCover6 from '../assets/images/BookCover6.png';
+import bookCover7 from '../assets/images/BookCover7.png';
+import bookCover8 from '../assets/images/BookCover8.png';
+import bookCover9 from '../assets/images/BookCover9.png';
 
-  // Function to fetch wishlist data
-  const fetchWishlist = async () => {
-    try {
-      setLoading(true); 
-      const token = localStorage.getItem('token');
-      const data = await getWishlist(token);
-      setWishlist(data);
-    } catch (err: any) {
-      console.error('Failed to fetch wishlist:', err);
-    } finally {
-      setLoading(false); 
+
+const bookCovers = [
+    bookCover1, bookCover2, bookCover3, bookCover4, bookCover5,
+    bookCover6, bookCover7, bookCover8, bookCover9
+];
+
+function Wishlist() {
+    const [wishList, setWishList] = useState<{ product_id: any }[]>([]);
+    const token = localStorage.getItem('token');
+
+    const getWishlistItems = async () => {
+        const response = await getWishlist();
+        if (response?.data?.success) {
+            console.log(response?.data?.result);
+            setWishList(response?.data?.result);
+        }
+    };
+
+    useEffect(() => {
+        getWishlistItems();
+    }, []);
+
+    if (!token) {
+        return (
+            <div>
+                {/* <Header container='home' /> */}
+        
+                    <Placeholder />
+                
+            </div>
+        );
     }
-  };
 
-  useEffect(() => {
-    fetchWishlist();
-  }, []);
-
-  // Handle removal of an item from the wishlist
-  const handleRemoveFromWishlist = async (id: string) => {
-    try {
-      await removeWishlist(id);
-      setWishlist((prevWishlist) => prevWishlist.filter((item) => item.product_id._id !== id));
-      await fetchWishlist();
-    } catch (err: any) {
-      console.error('Failed to remove item from wishlist:', err);
-      await fetchWishlist();
-    }
-  };
-
-  return (
-    <div>
-      <Header container="home" />
-      <div className="min-h-[83.75vh] max-w-6xl p-5 mx-auto flex flex-col gap-2 mt-2">
-        <Breadcrumbs container="wishlist" />
-        <div className="mt-5">
-          <div className="p-4 bg-[#F5F5F5] border-2 border-[#E4E4E4]">
-            <p className="font-bold">My Wishlist</p>
-          </div>
-          {loading ? (
-            <p className="p-4">Loading...</p>
-          ) : wishlist.length === 0 ? (
-            <p className="p-4">Your wishlist is empty.</p>
-          ) : (
-            wishlist.map((item, index) => (
-              <div key={index}>
-                <WishListContainer
-                  order={item}
-                  container="wishlist"
-                  onRemove={handleRemoveFromWishlist}
-                />
-              </div>
-            ))
-          )}
+    return (
+        <div>
+            <Header container='home' />
+            <div className='min-h-[83.75vh] max-w-6xl p-5 mx-auto flex flex-col mt-2'>
+                <Breadcrumbs container='wishlist' />
+                <div className='mt-4'>
+                    <div className='p-4 bg-[#F5F5F5]'>
+                        <p className='font-semibold'>My WishList ({wishList.length})</p>
+                    </div>
+                    {
+                        wishList.map((order, index) => {
+                            return (
+                                <div key={index}>
+                                    <BookLongCard 
+                                        book={{ ...order.product_id, cover: bookCovers[index % bookCovers.length] }} 
+                                        container='wishlist' 
+                                        getWishlistItems={getWishlistItems}
+                                    />
+                                </div>
+                            );
+                        })
+                    }
+                </div>
+            </div>
+            <Footer />
         </div>
-      </div>
-      <Footer />
-    </div>
-  );
+    );
 }
 
-export default WishList;
+export default Wishlist;
