@@ -155,7 +155,7 @@ function AuthTemplate({ container }: authTemplateProps) {
           <div className='w-full'>
             <div className={'flex justify-center font-semibold text-2xl px-12 py-5 pb-0 space-x-14 mt-1'}>
               <div className='mr-8'>
-                <NavLink to={'/'}>
+                <NavLink to={'/login'}>
                   <p className={`${container === "login" ? "text-black" : "text-[#878787]"} cursor-pointer`}>LOGIN</p>
                   {container === "login" && <div className='border-b-[8px] rounded-xl ml-7 border-[#A03037] w-[32%] mt-1'></div>}
                 </NavLink>
@@ -171,7 +171,7 @@ function AuthTemplate({ container }: authTemplateProps) {
           <div className='w-full flex-col flex justify-center'>
             <form onSubmit={handleSubmit} className='w-full max-w-xs mx-auto'>
               {container === "register" && (
-                <div className='flex w-full flex-col space-y-4 align-center justify-center px-7 py-3'>
+                <div className='flex w-full flex-col space-y-2 align-center justify-center px-7 py-1'>
                   <div className='flex flex-col items-center'>
                     <label className='text-xs font-normal self-start' htmlFor='fullName'>Full Name</label>
                     <input
@@ -237,7 +237,7 @@ function AuthTemplate({ container }: authTemplateProps) {
                 </div>
               )}
               {container === "login" && (
-                <div className='flex w-full flex-col space-y-4 align-center justify-center px-7 py-3'>
+                <div className='flex w-full flex-col space-y-2 align-center justify-center px-7 py-3'>
                   <div className='flex flex-col items-center'>
                     <label className='text-xs font-normal self-start' htmlFor='email'>Email Id</label>
                     <input
