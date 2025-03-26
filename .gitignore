@@ -24,7 +24,6 @@ dist-ssr
 *.sw?
 src/components/Auth
 src/pages/AuthRoutes.tsx
-src/pages/Profile.tsx
 
 
 
