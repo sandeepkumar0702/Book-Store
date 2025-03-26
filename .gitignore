@@ -23,7 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 src/components/Auth
-src/components/Cart
 src/components/Profile
 src/pages/AuthRoutes.tsx
 src/pages/MyOrders.tsx
