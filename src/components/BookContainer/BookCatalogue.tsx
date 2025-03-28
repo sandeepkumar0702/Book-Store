@@ -36,7 +36,7 @@ const BookCatalogue = () => {
 
     useEffect(() => {
         getBooksList();
-        // dispatch(resetCart())
+        //dispatch(resetCart())
     }, []);
 
     const getBooksList = async () => {

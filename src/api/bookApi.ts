@@ -1,7 +1,7 @@
 import Book from "../components/BookContainer/Book"
 import { apiConnector } from "../services/apiConnector"
 
-const BASE_URL = "https://bookstore.incubation.bridgelabz.com/bookstore_user"
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const getBooks = async () => {
     try{
