@@ -23,7 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 .env
-
+sonar-project.properties
+src/__tests__
 
 
 

@@ -41,7 +41,6 @@ function Wishlist() {
     if (!token) {
         return (
             <div>
-                {/* <Header container='home' /> */}
         
                     <Placeholder />
                 

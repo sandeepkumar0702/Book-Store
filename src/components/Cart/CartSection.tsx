@@ -15,7 +15,6 @@ type cartSectionProps = {
 
 const CartSection = ({ book, product_id, getCartItems }: cartSectionProps) => {
 
-    // console.log("book", book)
 
     const dispatch = useDispatch<AppDispatch>()
 

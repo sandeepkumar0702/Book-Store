@@ -214,7 +214,6 @@ const AddressDetails = ({orderSummary, setOrderSummary}:addressDetailsProps) => 
                     </div>
                 )}
 
-                {/* Existing Address List */}
                 {dummyAddressList.map((item, index) => (
                     <div key={index} className='flex items-start gap-2 p-2 rounded-md'>
                         <input

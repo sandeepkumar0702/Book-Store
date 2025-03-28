@@ -120,7 +120,6 @@ function BookDetails() {
     const addToCartHandler = async () => {
         try {
             const response = await addToTheCart(bookDetails._id);
-            // console.log(response)
             if (response?.data?.success) {
                 toast.success("Item added to cart");
                 setCartCount(1);

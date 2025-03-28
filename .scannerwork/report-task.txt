@@ -1,0 +1,6 @@
+projectKey=BookStore
+serverUrl=http://localhost:9000
+serverVersion=25.3.0.104237
+dashboardUrl=http://localhost:9000/dashboard?id=BookStore
+ceTaskId=3ec8060f-139f-4ae4-8919-fca9697a9024
+ceTaskUrl=http://localhost:9000/api/ce/task?id=3ec8060f-139f-4ae4-8919-fca9697a9024

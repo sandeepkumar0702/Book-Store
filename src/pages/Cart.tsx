@@ -61,7 +61,6 @@ const items: MenuProps['items'] = [
 const Cart = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    // const [myCartDetails, setMyCartDetails] = React.useState(true)
     const [addressDetails, setAddressDetails] = React.useState(false)
     const [orderSummary, setOrderSummary] = React.useState(false)
     const [cartItems, setCartItems] = React.useState<any[]>([])
@@ -138,17 +137,7 @@ const Cart = () => {
                     <div className='p-5 flex flex-col gap-2 border-2 border-[#DCDCDC] rounded-sm'>
                         <div className='flex justify-between items-center w-full'>
                             <p className='font-medium text-lg'>My Cart</p>
-                            {/* dummy locaiton dropdown */}
-                            {/* <div className='cursor-pointer border-2 border-[#DCDCDC] py-1.5 px-7 flex '>
-                                <Dropdown menu={{ items }} trigger={['click']}>
-                                    <a onClick={(e) => e.preventDefault()}>
-                                        <Space>
-                                            Click me
-                                            <DownOutlined />
-                                        </Space>
-                                    </a>
-                                </Dropdown>
-                            </div> */}
+                            
                         </div>
                         <div>
                             {
