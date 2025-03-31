@@ -1,22 +1,19 @@
 import React, { useState } from 'react'
 import loginSignUpImage from '../../assets/images/loginSignupImage.png'
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { IoEyeOff } from "react-icons/io5";
-import { IoEye } from "react-icons/io5";
+import { NavLink, useNavigate } from 'react-router-dom';
+import { IoEyeOff, IoEye } from "react-icons/io5";
 import { login, register } from '../../api/userApi';
 import { toast } from 'react-toastify';
-import { set } from 'react-hook-form';
-
 
 type authTemplateProps = {
-  container: string;
+  readonly container: string;
 }
 
 function AuthTemplate({ container }: authTemplateProps) {
-
   const navigate = useNavigate()
 
   const [passwordVisible, setPasswordVisible] = React.useState(false)
+  const [loading, setLoading] = useState(false)
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -94,20 +91,17 @@ function AuthTemplate({ container }: authTemplateProps) {
     e.preventDefault();
 
     if (!validateForm()) return;
-
+    setLoading(true)
     if (container === "login") {
       try {
         const data = await login({ email: formData.email, password: formData.password })
-        console.log("response",data)
-        console.log("token",data?.data?.result?.accessToken)
-        if(data?.data?.success){
+        if (data?.data?.success) {
           localStorage.setItem('token', data?.data?.result.accessToken)
           localStorage.setItem("name", formData.email.split("@")[0])
           toast.success("Login Success")
           navigate('/')
         }
       } catch (err: any) {
-        console.log(err.message)
         toast.error(err.message || "Login Failed")
       }
     } else if (container === "register") {
@@ -117,8 +111,7 @@ function AuthTemplate({ container }: authTemplateProps) {
           email: formData.email,
           password: formData.password,
           phone: formData.mobile,
-        }
-        )
+        })
 
         if (data?.data?.result !== null) {
           toast.success("User Created")
@@ -130,6 +123,7 @@ function AuthTemplate({ container }: authTemplateProps) {
         console.log(err.message)
       }
     }
+    setLoading(false)
     setFormData({
       fullName: "",
       email: "",
@@ -143,61 +137,65 @@ function AuthTemplate({ container }: authTemplateProps) {
       <div className='md:flex items-center justify-center w-screen sm:relative md:mr-52'>
 
         <div className='bg-[#F5F5F5] w-1/3 h-[391px] hidden sm:flex md:flex border-2 rounded-3xl shadow-xl flex-col space-y-6 align-center justify-center p-2'>
-          <div className=' flex ml-12 align-center'>
+          <div className='flex ml-12 align-center'>
             <img className='rounded-full w-[55%]' src={loginSignUpImage} alt='login-signup-image' />
           </div>
           <div className='w-2/4 ml-12 text-center'>
-            <p className='font-semibold text-[#0A0102]'>ONLINE BOOK SHOPPING</p>
+            <p data-testid="image-text" className='font-semibold text-[#0A0102]'>ONLINE BOOK SHOPPING</p>
           </div>
         </div>
 
-        <div className='bg-[#FFFFFF] md:w-96 h-[440px] border-2 rounded-[7px] shadow-xl z-10 sm:static sm:ml-4 md:absolute md:left-15 lg:right-[202px] px-3'>
+
+        <div className='bg-[#FFFFFF] md:w-96 min-h-[440px] max-h-[600px] overflow-y-auto border-2 rounded-[7px] shadow-xl z-10 sm:static sm:ml-4 md:absolute md:left-15 lg:right-[202px] px-3'>
           <div className='w-full'>
             <div className={'flex justify-center font-semibold text-2xl px-12 py-5 pb-0 space-x-14 mt-1'}>
               <div className='mr-8'>
                 <NavLink to={'/login'}>
-                  <p className={`${container === "login" ? "text-black" : "text-[#878787]"} cursor-pointer`}>LOGIN</p>
+                  <p data-testid="login-link" className={`${container === "login" ? "text-black" : "text-[#878787]"} cursor-pointer`}>LOGIN</p>
                   {container === "login" && <div className='border-b-[8px] rounded-xl ml-7 border-[#A03037] w-[32%] mt-1'></div>}
                 </NavLink>
               </div>
               <div className='flex flex-col'>
                 <NavLink to={'/register'}>
-                  <p className={`${container === "register" ? "text-black" : "text-[#878787]"} cursor-pointer`}>SIGNUP</p>
+                  <p data-testid="register-link" className={`${container === "register" ? "text-black" : "text-[#878787]"} cursor-pointer`}>SIGNUP</p>
                   {container === "register" && <div className='border-b-[8px] rounded-xl ml-8 border-[#A03037] w-[32%] mt-1'></div>}
                 </NavLink>
               </div>
             </div>
           </div>
           <div className='w-full flex-col flex justify-center'>
-            <form onSubmit={handleSubmit} className='w-full max-w-xs mx-auto'>
+            <form data-testid="form" onSubmit={handleSubmit} className='w-full max-w-xs mx-auto'>
               {container === "register" && (
-                <div className='flex w-full flex-col space-y-2 align-center justify-center px-7 py-1'>
-                  <div className='flex flex-col items-center'>
-                    <label className='text-xs font-normal self-start' htmlFor='fullName'>Full Name</label>
+                <div className='flex w-full flex-col space-y-2 align-center justify-center px-7 py-3'>
+                  <div className='flex flex-col'>
+                    <label className='text-xs font-normal mb-1' htmlFor='fullName'>Full Name</label>
                     <input
+                      data-testid="register-fullName"
                       type='text'
                       id='fullName'
                       value={formData.fullName}
                       onChange={handleChange}
                       className='w-full h-9 border-2 rounded-sm p-2 outline-none focus:border-red-600'
                     />
-                    {error.fullName && <p className='text-red-600 text-xs self-start'>{error.fullName}</p>}
+                    {error.fullName && <p className='text-red-600 text-xs mt-1'>{error.fullName}</p>}
                   </div>
-                  <div className='flex flex-col items-center'>
-                    <label className='text-xs font-normal self-start' htmlFor='email'>Email Id</label>
+                  <div className='flex flex-col'>
+                    <label className='text-xs font-normal mb-1' htmlFor='email'>Email Id</label>
                     <input
+                      data-testid="register-email"
                       type='email'
                       id='email'
                       value={formData.email}
                       onChange={handleChange}
                       className='w-full h-9 border-2 rounded-sm p-2 outline-none focus:border-red-600'
                     />
-                    {error.email && <p className='text-red-600 text-xs self-start'>{error.email}</p>}
+                    {error.email && <p className='text-red-600 text-xs mt-1'>{error.email}</p>}
                   </div>
-                  <div className='flex flex-col items-center'>
-                    <label className='text-xs font-normal self-start' htmlFor='password'>Password</label>
+                  <div className='flex flex-col'>
+                    <label className='text-xs font-normal mb-1' htmlFor='password'>Password</label>
                     <div className='relative flex-col w-full justify-center'>
                       <input
+                        data-testid="register-password"
                         type={passwordVisible ? "text" : "password"}
                         id='password'
                         value={formData.password}
@@ -218,29 +216,31 @@ function AuthTemplate({ container }: authTemplateProps) {
                         />
                       )}
                     </div>
-                    {error.password && <p className='text-red-600 text-xs self-start'>{error.password}</p>}
+                    {error.password && <p className='text-red-600 text-xs mt-1'>{error.password}</p>}
                   </div>
-                  <div className='flex flex-col items-center'>
-                    <label className='text-xs font-normal self-start' htmlFor='mobile'>Mobile Number</label>
+                  <div className='flex flex-col'>
+                    <label className='text-xs font-normal mb-1' htmlFor='mobile'>Mobile Number</label>
                     <input
                       type='tel'
+                        data-testid="register-mobileNumber"
                       id='mobile'
                       value={formData.mobile}
                       onChange={handleChange}
                       className='w-full h-9 border-2 rounded-sm p-2 outline-none focus:border-red-600'
                     />
-                    {error.mobile && <p className='text-red-600 text-xs self-start'>{error.mobile}</p>}
+                    {error.mobile && <p className='text-red-600 text-xs mt-1'>{error.mobile}</p>}
                   </div>
                   <div className='flex flex-col items-center mt-2'>
-                    <button type="submit" className='bg-[#A03037] text-sm text-white w-full h-9 rounded-sm p-1 mt-3'>Signup</button>
+                    <button disabled={loading} type="submit" className='bg-[#A03037] text-sm text-white w-full h-9 rounded-sm p-1 mt-3'>Signup</button>
                   </div>
                 </div>
               )}
               {container === "login" && (
-                <div className='flex w-full flex-col space-y-2 align-center justify-center px-7 py-3'>
+                <div className='flex w-full flex-col space-y-4 align-center justify-center px-7 py-3'>
                   <div className='flex flex-col items-center'>
                     <label className='text-xs font-normal self-start' htmlFor='email'>Email Id</label>
                     <input
+                      data-testid="login-email-input"
                       onChange={handleChange}
                       type='email'
                       id='email'
@@ -253,6 +253,7 @@ function AuthTemplate({ container }: authTemplateProps) {
                     <label className='text-xs font-normal self-start' htmlFor='password'>Password</label>
                     <div className='relative flex-col w-full justify-center'>
                       <input
+                        data-testid="login-password-input"
                         onChange={handleChange}
                         type={passwordVisible ? "text" : "password"}
                         id='password'
@@ -277,7 +278,7 @@ function AuthTemplate({ container }: authTemplateProps) {
                     </div>
                   </div>
                   <div className='flex flex-col items-center mt-2'>
-                    <button type="submit" className='bg-[#A03037] text-sm text-white w-full h-9 rounded-sm p-1 mt-3'>Login</button>
+                    <button disabled={loading} type="submit" className='bg-[#A03037] text-sm text-white w-full h-9 rounded-sm p-1 mt-3'>Login</button>
                   </div>
                   <div className='relative flex items-center justify-center my-3'>
                     <div className='absolute border-t border-[#E1E4EA]-300 w-[80%]'></div>

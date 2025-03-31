@@ -2,7 +2,6 @@ import React from 'react'
 import Header from '../components/Common/Header'
 import { NavLink } from 'react-router-dom'
 
-
 const ForgotPassword = () => {
     return (
         <div>

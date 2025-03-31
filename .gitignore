@@ -22,7 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-
-
-
+src/__tests__
+src/__mocks__

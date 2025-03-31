@@ -17,7 +17,6 @@ import bookCover6 from '../../assets/images/BookCover6.png';
 import bookCover7 from '../../assets/images/BookCover7.png';
 import bookCover8 from '../../assets/images/BookCover8.png';
 import bookCover9 from '../../assets/images/BookCover9.png';
-import { resetCart } from '../../services/slice/cartSlice';
 
 const bookCovers: string[] = [
     bookCover1, bookCover2, bookCover3, bookCover4, bookCover5, 
@@ -30,7 +29,7 @@ const BookCatalogue = () => {
     const bookList = useSelector((state: RootState) => state.bookList.bookList);
     const loading = useSelector((state: RootState) => state.bookList.loading);
 
-    // Pagination State
+
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(8);
 

@@ -1,9 +1,6 @@
 import axios, { AxiosResponse, Method } from "axios";
-import https from "https";
 
-const axiosInstance = axios.create({
-
-})
+const axiosInstance = axios.create({})
 
 axiosInstance.interceptors.request.use(
     (config) => {
