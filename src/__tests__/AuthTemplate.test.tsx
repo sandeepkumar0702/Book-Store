@@ -269,7 +269,7 @@ describe("AuthTemplate component tests", () => {
         fireEvent.change(fullNameField, { target: { value: "testUser" } });
         fireEvent.change(emailField, { target: { value: "testuser@gmail.com" } });
         fireEvent.change(passwordField, { target: { value: "Pass@123" } });
-        fireEvent.change(mobileNumberField, { target: { value: "1234567890" } }); // Ensure valid 10-digit number
+        fireEvent.change(mobileNumberField, { target: { value: "1234567890" } }); 
     
         const form = screen.getByTestId("form");
         fireEvent.submit(form);

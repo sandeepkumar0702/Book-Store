@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import OrderConfirmation from "../pages/OrderConfirmation"; // Adjust path if needed
+import OrderConfirmation from "../pages/OrderConfirmation";
 import { MemoryRouter } from "react-router-dom";
 
 jest.mock("../components/Common/Header.tsx", () => () => <div data-testid="header">Mock Header</div>);

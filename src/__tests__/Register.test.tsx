@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Register from "../pages/Register"; // Adjust the path if needed
+import Register from "../pages/Register"; 
 import RegisterForm from "../components/Auth/RegisterForm";
 
 jest.mock("../components/Auth/RegisterForm", () => jest.fn(() => <div data-testid="register-form">Mock RegisterForm</div>));

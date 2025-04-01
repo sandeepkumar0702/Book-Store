@@ -1,14 +1,25 @@
 import { apiConnector } from "../services/apiConnector"
 
-const BASE_URL = "https://bookstore.incubation.bridgelabz.com/bookstore_user";
+// const BASE_URL = "https://bookstore.incubation.bridgelabz.com/bookstore_user";
+const BASE_URL = "https://bookstore.incubation.bridgelabz.com/bookstore_use";
 
 export const getBooks = async () => {
     try{
         const response = await apiConnector("GET", `${BASE_URL}/get/book`)
         return response
     }catch(err){
-        console.error("Error occurred while fetching books:", err);
-        throw err;
+        try{
+            const response =await  fetch("http://localhost:3000/Books");
+            if (!response.ok) {
+                throw new Error("Failed to fetch books from JSON Server");
+            }
+            const data = await response.json();
+            console.log(data);
+            return { data: { result: data || [] } };
+        } catch (jsonErr) {
+            console.error("Error fetching from JSON Server:", jsonErr.message || jsonErr);
+            return { data: { result: [] } };
+        }
     }
 }
 

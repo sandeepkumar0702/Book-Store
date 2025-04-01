@@ -3,7 +3,6 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import FeedbackForm from "../components/BookDetails/FeedbackForm";
 import { addBookReview } from "../api/bookApi";
 
-// Mock API function
 jest.mock("../api/bookApi", () => ({
   addBookReview: jest.fn(),
 }));
@@ -38,9 +37,9 @@ describe("FeedbackForm Component", () => {
     render(<FeedbackForm bookDetails={mockBookDetails} getReviews={mockGetReviews} />);
 
     const stars = screen.getAllByRole("button");
-    fireEvent.click(stars[3]); // Click on the 4th star (index 3)
+    fireEvent.click(stars[3]); 
 
-    expect(stars[3].firstChild).toHaveClass("text-[#FFD700]"); // Star should be filled
+    expect(stars[3].firstChild).toHaveClass("text-[#FFD700]");
   });
 
 
@@ -53,12 +52,12 @@ describe("FeedbackForm Component", () => {
     fireEvent.change(textarea, { target: { value: "Nice book!" } });
 
     const stars = screen.getAllByRole("button");
-    fireEvent.click(stars[2]); // Select 3-star rating
+    fireEvent.click(stars[2]); 
 
     const submitButton = screen.getByRole("button", { name: /submit/i });
     fireEvent.click(submitButton);
 
     expect(addBookReview).toHaveBeenCalledWith("12345", "Nice book!", 3);
-    expect(mockGetReviews).not.toHaveBeenCalled(); // Since API fails, getReviews shouldn't be called
+    expect(mockGetReviews).not.toHaveBeenCalled(); 
   });
 });
