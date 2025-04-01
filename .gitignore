@@ -35,7 +35,6 @@ src/__tests__/Breadcrumbs.test.tsx
 src/__tests__/CartSlice.test.tsx
 src/__tests__/FeedbackForm.test.tsx
 src/__tests__/Footer.test.tsx
-src/__tests__/ForgotPassword.test.tsx
 src/__tests__/Home.test.tsx
 src/__tests__/OrderConfirmation.test.tsx
 src/__tests__/OrderSlice.test.tsx
