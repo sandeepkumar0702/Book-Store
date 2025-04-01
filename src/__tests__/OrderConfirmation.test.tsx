@@ -13,6 +13,7 @@ describe("OrderConfirmation Page", () => {
         <OrderConfirmation />
       </MemoryRouter>
     );
+    
     const continueShoppingButton = screen.getByRole("button", { name: /continue shopping/i });
     expect(continueShoppingButton).toBeInTheDocument();
   }); 

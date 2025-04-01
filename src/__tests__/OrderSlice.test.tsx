@@ -7,6 +7,7 @@ describe("orderSlice reducer", () => {
         const result = orderReducer(undefined, { type: "" });
         expect(result).toEqual(initialState);
     });
+    
 
     test("should add new orders to the prevOrdersList", () => {
         const previousState = { prevOrdersList: [{ id: 1, item: "Pizza" }] };
