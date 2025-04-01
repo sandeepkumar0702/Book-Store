@@ -24,7 +24,6 @@ dist-ssr
 *.sw?
 src/__tests__/CartSlice.test.tsx
 src/__tests__/FeedbackForm.test.tsx
-src/__tests__/BookContainer.test.tsx
 
 
 
