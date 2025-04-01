@@ -22,7 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-src/__tests__/AddressDetails.test.tsx
 src/__tests__/AddressForm.test.tsx
 src/__tests__/AddressList.test.tsx
 src/__tests__/BookDetails.test.tsx
