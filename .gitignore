@@ -26,7 +26,6 @@ src/__tests__/AddressDetails.test.tsx
 src/__tests__/AddressForm.test.tsx
 src/__tests__/AddressList.test.tsx
 src/__tests__/Authroutes.test.tsx
-src/__tests__/Authtemplate.test.tsx
 src/__tests__/BookDetails.test.tsx
 src/__tests__/BookLongCard.test.tsx
 src/__tests__/BookPage.test.tsx
