@@ -22,7 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-src/__tests__/BookLongCard.test.tsx
 src/__tests__/BookPage.test.tsx
 src/__tests__/BookSlice.test.tsx
 src/__tests__/CartSlice.test.tsx
