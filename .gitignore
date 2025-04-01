@@ -31,7 +31,6 @@ src/__tests__/BookDetails.test.tsx
 src/__tests__/BookLongCard.test.tsx
 src/__tests__/BookPage.test.tsx
 src/__tests__/BookSlice.test.tsx
-src/__tests__/Breadcrumbs.test.tsx
 src/__tests__/CartSlice.test.tsx
 src/__tests__/FeedbackForm.test.tsx
 src/__tests__/OrderConfirmation.test.tsx
