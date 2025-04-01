@@ -42,7 +42,6 @@ src/__tests__/OrderSlice.test.tsx
 src/__tests__/Profile.test.tsx
 src/__tests__/ProfileDropdown.test.tsx
 src/__tests__/ProfileEditForm.test.tsx
-src/__tests__/Register.test.tsx
 src/__tests__/Registrationform.test.tsx
 src/__tests__/WishList.test.tsx
 src/__tests__/WishListSlice.test.tsx
