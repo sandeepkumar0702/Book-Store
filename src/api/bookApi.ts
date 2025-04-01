@@ -1,6 +1,6 @@
 import { apiConnector } from "../services/apiConnector"
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+const BASE_URL = "https://bookstore.incubation.bridgelabz.com/bookstore_user";
 
 export const getBooks = async () => {
     try{

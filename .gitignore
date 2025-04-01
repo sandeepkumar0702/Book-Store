@@ -28,8 +28,7 @@ src/__tests__/CartSlice.test.tsx
 src/__tests__/FeedbackForm.test.tsx
 src/__tests__/OrderConfirmation.test.tsx
 src/__tests__/OrderSlice.test.tsx
-src/__tests__/WishList.test.tsx
-src/__tests__/WishListSlice.test.tsx
+src/__tests__/BookContainer.test.tsx
 
 
 
