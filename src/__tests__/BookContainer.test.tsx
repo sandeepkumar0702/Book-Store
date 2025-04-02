@@ -49,10 +49,8 @@ describe('BookContainer Component', () => {
         renderComponent();
         const dropdownButton = screen.getByText('Sort by relevance');
         fireEvent.click(dropdownButton);
-        
         const highToLowOption = screen.getByText('Price: High to Low');
         fireEvent.click(highToLowOption);
-        
         expect(setSortQueryMock).toHaveBeenCalledWith('highToLow');
     });
 
@@ -63,7 +61,5 @@ describe('BookContainer Component', () => {
       fireEvent.click(screen.getByText('Price: Low to High'));
   
       expect(setSortQueryMock).toHaveBeenCalledWith('lowToHigh');
-  
-    
   });
 });

@@ -61,5 +61,19 @@ describe("ProfileDropdown Component", () => {
             expect(screen.queryByText(/testuser/i)).not.toBeInTheDocument()
         })
     })
+    test("updates profile name when localStorage changes", async () => {
+        localStorage.setItem('name', 'oldUser');
+        render(
+            <MemoryRouter>
+                <ProfileDropdown logout={mockLogout} />
+            </MemoryRouter>
+        );
+        expect(screen.getByText(/olduser/i)).toBeInTheDocument();
 
+        localStorage.setItem('name', 'newUser');
+        window.dispatchEvent(new Event("storage"));
+        await waitFor(() => {
+            expect(screen.getByText(/newuser/i)).toBeInTheDocument();
+        });
+    });
 });

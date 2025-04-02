@@ -40,7 +40,6 @@ function BookLongCard({ book, container, getWishlistItems }: bookLongCardProps) 
                 getWishlistItems();
             }
         } catch (err) {
-            console.error("Error while removing from wishlist", err);
             toast.error("Failed to remove item from wishlist");
         }
     }

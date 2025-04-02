@@ -1,7 +1,26 @@
 import { apiConnector } from "../services/apiConnector"
 
-// const BASE_URL = "https://bookstore.incubation.bridgelabz.com/bookstore_user";
-const BASE_URL = "https://bookstore.incubation.bridgelabz.com/bookstore_use";
+const BASE_URL = "https://bookstore.incubation.bridgelabz.com/bookstore_user";
+// const BASE_URL = "https://bookstore.incubation.bridgelabz.com/bookstore_use";
+// export const getBooks = async () => {
+//     try{
+//         const response =await  fetch("http://localhost:3000/Books");
+//         if (!response.ok) {
+//             throw new Error("Failed to fetch books from JSON Server");
+//         }
+//         const data = await response.json();
+//         console.log(data);
+//         return { data: { result: data || [] } };
+//     } catch (jsonErr) {
+//         try{
+//             const response = await apiConnector("GET", `${BASE_URL}/get/book`)
+//             return response
+//         }
+//         catch(err){
+
+//         }
+//     }
+// }
 
 export const getBooks = async () => {
     try{

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React , { useState } from 'react'
 import { FaMinus } from 'react-icons/fa6'
 import { IoAdd } from 'react-icons/io5'
 import { removeCartItem, updateCartItem } from '../../api/bookApi'
@@ -14,8 +14,6 @@ type cartSectionProps = {
 }
 
 const CartSection = ({ book, product_id, getCartItems }: cartSectionProps) => {
-
-    // console.log("book", book)
 
     const dispatch = useDispatch<AppDispatch>()
 
@@ -33,7 +31,7 @@ const CartSection = ({ book, product_id, getCartItems }: cartSectionProps) => {
             await updateCartItem(book._id, newCount)
             dispatch(incrementQuantity(product_id))
         }catch(err){
-            console.log("Error in updating cart", err)
+            // console.log("Error in updating cart", err)
         }
     }
 
@@ -46,7 +44,7 @@ const CartSection = ({ book, product_id, getCartItems }: cartSectionProps) => {
                 dispatch(decrementQuantity(product_id))
             }catch(err)
             {
-                console.log("Error in updating cart", err)
+                // console.log("Error in updating cart", err)
             }
         }
     }
@@ -61,7 +59,7 @@ const CartSection = ({ book, product_id, getCartItems }: cartSectionProps) => {
             }
             console.log(response)
         }catch(err){
-            console.log("Error in removing from cart", err)
+            // console.log("Error in removing from cart", err)
         }
     }
 
@@ -83,6 +81,7 @@ const CartSection = ({ book, product_id, getCartItems }: cartSectionProps) => {
                     <div className='flex gap-5'>
                         <div className='h-8 md:h-10 w-24 sm:w-28 md:w-32 flex items-center justify-between'>
                             <button
+                                data-testid="decrement-button"
                                 onClick={decrementCart}
                                 className='cursor-pointer w-6 sm:w-7 md:w-8 h-6 sm:h-7 md:h-8 flex items-center justify-center bg-[#FAFAFA] border-[#DBDBDB] border rounded-full'
                             >
@@ -94,6 +93,7 @@ const CartSection = ({ book, product_id, getCartItems }: cartSectionProps) => {
                                 <p className='text-base sm:text-lg'>{cartCount}</p>
                             </div>
                             <button
+                                data-testid="increment-button"
                                 onClick={incrementCart}
                                 className='cursor-pointer w-6 sm:w-7 md:w-8 h-6 sm:h-7 md:h-8 flex items-center justify-center bg-[#FAFAFA] border-[#DBDBDB] border rounded-full'
                             >

@@ -74,7 +74,7 @@ test("should handle resetCart", () => {
   };
   expect(cartReducer(state, resetCart())).toEqual({
     cart: [],
-    cartLoading: true, // Match the current behavior
+    cartLoading: true, 
   });
 });
 
@@ -85,4 +85,18 @@ test("should handle resetCart", () => {
       cartLoading: true,
     });
   });
+  test("should not decrement quantity if item is not found in the cart", () => {
+    const state = { ...initialState, cart: [] }; 
+    expect(cartReducer(state, decrementQuantity("2"))).toEqual(state); 
+  });
+  test("should not remove item if it is not found in the cart", () => {
+    const state = { ...initialState, cart: [{ _id: "1", name: "Book 1" }] };
+    expect(cartReducer(state, removeFromCart("2"))).toEqual(state);
+  });
+  test("should not increment quantity if item is not found in the cart", () => {
+    const state = { ...initialState, cart: [{ _id: "1", name: "Book 1", quantityToBuy: 1 }] };
+    expect(cartReducer(state, incrementQuantity("2"))).toEqual(state); 
+  });
+  
+  
 });
