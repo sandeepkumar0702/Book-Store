@@ -27,7 +27,6 @@ src/ProxyServer
 
 src/__tests__/CartSection.test.tsx
 src/__tests__/LoginForm.test.tsx
-src/__tests__/OrderSummary.test.tsx
 
 
 
