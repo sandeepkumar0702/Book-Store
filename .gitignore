@@ -25,7 +25,6 @@ dist-ssr
 
 src/ProxyServer
 
-src/__tests__/CartSection.test.tsx
 
 
 
